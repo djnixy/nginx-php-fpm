@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+    web:
+        build: docker/nginx
+        ports:
+            - "8000:80"
+        links:
+            - php-fpm
+        volumes:
+            - ./src:/var/www/html
+    php-fpm:
+        build: docker/php-fpm
+        volumes:
+            - ./src:/var/www/html
